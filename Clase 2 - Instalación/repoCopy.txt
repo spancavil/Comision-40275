@@ -1,0 +1,5 @@
+Ir a la ubicación del repo.
+
+git clone <dirección_al_repo>
+
+Listo.
