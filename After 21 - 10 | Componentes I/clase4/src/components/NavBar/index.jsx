@@ -1,11 +1,8 @@
 import React from "react";
+import CartWidget from "../CartWidget";
 import './styles.css';
 
-const NavBar = ({message, temp = 18, nfts}) => {
-
-    console.log(message);
-    console.log(temp);
-    console.log(nfts);
+const NavBar = () => {
 
     return (
         <ul>
@@ -21,7 +18,7 @@ const NavBar = ({message, temp = 18, nfts}) => {
             <li>
                 <a href="#about">About</a>
             </li>
-            <span>{message}, la temperatura es de {temp}°C</span>
+            <CartWidget />
         </ul>
     );
 };

@@ -1,13 +1,13 @@
 import './App.css';
 import NavBar from './components/NavBar';
+import ItemListContainer from './containers/ItemListContainer'
 
 function App() {
 
-  const myNfts = ["nft bonito1", "nft feo 2"]
-
   return (
     <div className="App">
-      <NavBar message = {"Hola, cómo estás?"} nfts={myNfts}/>
+      <NavBar/>
+      <ItemListContainer greeting={"Hola coders!"}/>
     </div>
   );
 }
