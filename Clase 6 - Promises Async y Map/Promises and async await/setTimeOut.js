@@ -1,8 +1,8 @@
 const imprimeMensaje = () => {
-    console.log("Se imprime el mensaje luego de 3 segundos");
+    console.log("Se imprime el mensaje luego de 0 segundos");
 }
 
-setTimeout(imprimeMensaje, 2000)
+setTimeout(imprimeMensaje, 0)
 
 console.log("Hola fuera del timeout");
 

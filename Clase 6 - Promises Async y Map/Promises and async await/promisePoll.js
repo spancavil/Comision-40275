@@ -1,7 +1,7 @@
 const promise = new Promise((acc, rej) => {
     setTimeout(() => {
         rej("Valor devuelto");
-    }, 0);
+    }, 3000);
 });
 
 promise

@@ -1,17 +1,17 @@
-//IIFE
-(async () => {
+//IIFE -- función autoejecutada (no tiene que ser llamada)
+ (async () => {
 
     //Defino la promise
     const obtenerProductos = () => {
-        return new Promise((accept, reject) => {
+        return new Promise((resolve, reject) => {
             console.log("Hola en promise");
             const aceptor = Math.random();
             if (aceptor > 0.5) {
-                accept({ value: "Listado de productos" })
+                resolve({ value: "Listado de productos" })
             }
             reject({ message: "No te devuelvo nada" })
         })
-    } 
+    }
 
     //Bloque try-catch
     try {
@@ -24,3 +24,7 @@
     console.log("Continua la ejecución!");
         
 })()
+
+/* (()=> {
+    console.log("Esta función se autoejecuta");
+})() */
