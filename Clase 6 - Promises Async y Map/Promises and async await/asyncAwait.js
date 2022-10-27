@@ -1,0 +1,26 @@
+//IIFE
+(async () => {
+
+    //Defino la promise
+    const obtenerProductos = () => {
+        return new Promise((accept, reject) => {
+            console.log("Hola en promise");
+            const aceptor = Math.random();
+            if (aceptor > 0.5) {
+                accept({ value: "Listado de productos" })
+            }
+            reject({ message: "No te devuelvo nada" })
+        })
+    } 
+
+    //Bloque try-catch
+    try {
+        const response = await obtenerProductos();
+        console.log(response);
+    } catch (error) {
+        console.log("Entra en el catch")
+        console.log(error);
+    }
+    console.log("Continua la ejecución!");
+        
+})()
