@@ -1,15 +1,10 @@
 import './App.css';
-import Ad from './components/Ad';
-import NavBar from './components/NavBar';
-import ItemListContainer from './containers/ItemListContainer'
+import Router from './routes';
 
 function App() {
 
   return (
-    <div className="App">
-      <NavBar/>
-      <ItemListContainer greeting={"Hola coders!"}/>
-    </div>
+    <Router/>
   );
 }
 

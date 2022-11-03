@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './styles.css';
-import rawProducts from '../../data/products';
+// import rawProducts from '../../data/products';
 import ItemList from '../../components/ItemList';
 
 export default function ItemListContainer ({greeting}) {
@@ -64,8 +64,6 @@ export default function ItemListContainer ({greeting}) {
             }
         })()
     }, [])
-
-    console.log(products);
 
     return (
         <>
