@@ -2,10 +2,15 @@ import React, {useEffect, useState} from 'react';
 import './styles.css';
 // import rawProducts from '../../data/products';
 import ItemList from '../../components/ItemList';
+import { useParams } from 'react-router-dom';
 
 export default function ItemListContainer ({greeting}) {
 
     const [products, setProducts] = useState([])
+
+    const {categoryId} = useParams()
+
+    console.log(categoryId);
 
     // const [nombre, setNombre] = useState("Oscar")
     // const [fecha, setFecha] = useState("")
@@ -54,7 +59,13 @@ export default function ItemListContainer ({greeting}) {
     useEffect(()=> {
         ( async ()=> {
             try {
-                const response = await fetch('https://rickandmortyapi.com/api/character');
+                console.log(categoryId);
+                let response;
+                if (categoryId) {
+                    response = await fetch(`https://rickandmortyapi.com/api/character/?species=${categoryId}`);
+                } else {
+                    response = await fetch(`https://rickandmortyapi.com/api/character`);
+                }
                 console.log(response);
                 const data = await response.json();
                 console.log(data);
@@ -63,7 +74,7 @@ export default function ItemListContainer ({greeting}) {
                 console.log(error);
             }
         })()
-    }, [])
+    }, [categoryId])
 
     return (
         <>

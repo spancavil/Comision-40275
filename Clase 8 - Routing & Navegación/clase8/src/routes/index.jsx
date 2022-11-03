@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "../components/Root";
+import ItemDetailContainer from "../containers/ItemDetailContainer";
 import ItemListContainer from "../containers/ItemListContainer";
 
 
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/detail/:id",
-                element: <h2>Detalle</h2>,
+                element: <ItemDetailContainer/>,
             },
         ],
     },
