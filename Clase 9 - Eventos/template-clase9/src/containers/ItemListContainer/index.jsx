@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import './styles.css';
+import React, { useEffect, useState } from "react";
+import "./styles.css";
 // import rawProducts from '../../data/products';
-import ItemList from '../../components/ItemList';
-import { useParams } from 'react-router-dom';
-import {ClimbingBoxLoader} from 'react-spinners'
+import ItemList from "../../components/ItemList";
+import { useParams } from "react-router-dom";
+import { ClimbingBoxLoader } from "react-spinners";
+import Ad from "../../components/Ad";
 
-export default function ItemListContainer ({greeting}) {
+export default function ItemListContainer({ greeting }) {
+    const [products, setProducts] = useState([]);
 
-    const [products, setProducts] = useState([])
+    const [adView, setAdView] = useState(true);
 
-    const {categoryId} = useParams()
+    const { categoryId } = useParams();
 
     console.log(categoryId);
 
@@ -57,26 +59,55 @@ export default function ItemListContainer ({greeting}) {
         })()
     }, []) */
 
-    useEffect(()=> {
-        ( async ()=> {
+    const handleClose = (evento) => {
+        console.log(evento);
+        setAdView(false);
+    };
+
+    useEffect(() => {
+        (async () => {
             try {
                 console.log(categoryId);
                 let response;
                 if (categoryId) {
-                    response = await fetch(`https://rickandmortyapi.com/api/character/?species=${categoryId}`);
+                    response = await fetch(
+                        `https://rickandmortyapi.com/api/character/?species=${categoryId}`
+                    );
                 } else {
-                    response = await fetch(`https://rickandmortyapi.com/api/character`);
-                }   
+                    response = await fetch(
+                        `https://rickandmortyapi.com/api/character`
+                    );
+                }
                 const data = await response.json();
                 console.log(data);
-                if (data.results) setProducts(data.results)
+                if (data.results) setProducts(data.results);
             } catch (error) {
                 console.log(error);
             }
-        })()
-    }, [categoryId])
+        })();
+    }, [categoryId]);
 
     console.log(products);
+
+    //On escape it will close
+    useEffect(() => {
+        const handleEsc = (evento) => {
+            console.log(evento); //Evento nativo del browser
+
+            if (evento.keyCode === 27) {
+                console.log("will close");
+                setAdView(false)
+                window.removeEventListener("keydown", handleEsc);
+            }
+
+        };
+
+        window.addEventListener("keydown", handleEsc);
+
+        return () => {
+            console.log("Se desmontará el componente, por lo tanto desrregistramos el evento");
+        };
+    }, []);
 
     return (
         <>
@@ -87,7 +118,18 @@ export default function ItemListContainer ({greeting}) {
                 <p>{fecha}</p>
                 <button onClick={handleUpdateDate}>Actualizar la fecha</button>
             </div> */}
-            {products.length ? <ItemList products={products}/> : <ClimbingBoxLoader/> }
+            ;
+            {products.length ? (
+                <ItemList products={products} />
+            ) : (
+                <ClimbingBoxLoader />
+            )}
+            {adView ? (
+                <Ad>
+                    <h1>Este es un anuncio molesto</h1>
+                    <button onClick={handleClose} >Cerrar el anuncio</button>
+                </Ad>
+            ) : null}
         </>
-    )
+    );
 }

@@ -3,13 +3,14 @@ import React, { useState } from "react";
 const InputConError = () => {
     const [name, setName] = useState("");
 
-    const onKeyDown = (e) => {
-        setName(e.key);
+    const onChange = (e) => {
+        // setName(previousValue => [...previousValue, e.key]);
+        setName(e.target.value)
     };
 
     return (
         <div>
-            <input value={name} onKeyDown={onKeyDown} />
+            <input value={name} onChange={onChange} />
         </div>
     );
 };
