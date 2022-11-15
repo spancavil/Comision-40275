@@ -1,0 +1,33 @@
+@import '../../styles/colors.scss';
+
+.ul-container {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    height: 50px;
+}
+
+.li-list {
+    float: left;
+}
+
+.li-list a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.li-list a:hover {
+    background-color: #ddd;
+}
+
+.ul-container-dark {
+    @extend .ul-container;
+    background-color: $dark-brown;
+    border: 1px solid $light-gray;
+}
