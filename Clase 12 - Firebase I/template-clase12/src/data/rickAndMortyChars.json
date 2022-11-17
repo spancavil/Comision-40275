@@ -11,7 +11,8 @@
             "url": "https://rickandmortyapi.com/api/location/1"
         },
         "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-        "quantity": 10
+        "quantity": 10,
+        "price": 200.45
     },
     {
         "id": 2,
@@ -25,7 +26,8 @@
             "url": ""
         },
         "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-        "quantity": 25
+        "quantity": 25,
+        "price": 145
     },
     {
         "id": 6,
@@ -39,7 +41,8 @@
             "url": "https://rickandmortyapi.com/api/location/2"
         },
         "image": "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
-        "quantity": 15
+        "quantity": 15,
+        "price": 194.30
     },
     {
         "id": 7,
@@ -53,6 +56,7 @@
             "url": "https://rickandmortyapi.com/api/location/20"
         },
         "image": "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
-        "quantity": 19
+        "quantity": 19,
+        "price": 300
     }
 ]

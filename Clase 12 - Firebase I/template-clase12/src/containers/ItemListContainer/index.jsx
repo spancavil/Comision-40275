@@ -5,6 +5,8 @@ import ItemList from "../../components/ItemList";
 import { useParams } from "react-router-dom";
 import Ad from "../../components/Ad";
 import Loader from "../../components/Loader";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 export default function ItemListContainer({ greeting }) {
     const [products, setProducts] = useState([]);
@@ -68,8 +70,8 @@ export default function ItemListContainer({ greeting }) {
         (async () => {
             try {
                 console.log(categoryId);
-                let response;
-                if (categoryId) {
+                // let response;
+                /* if (categoryId) {
                     response = await fetch(
                         `https://rickandmortyapi.com/api/character/?species=${categoryId}`
                     );
@@ -77,10 +79,28 @@ export default function ItemListContainer({ greeting }) {
                     response = await fetch(
                         `https://rickandmortyapi.com/api/character`
                     );
+                } */
+                // const data = await response.json();
+                // console.log(data);
+
+                //Codigo añadido de la documentacion de firestore
+                //1er paso armar la query
+                let q;
+                if (categoryId) {
+                    q = query(collection(db, "products"), where("species", "==", categoryId))
+                } else {
+                    q = query(collection(db, "products"));
                 }
-                const data = await response.json();
-                console.log(data);
-                if (data.results) setProducts(data.results);
+
+                //2do paso: realizar la query
+                const querySnapshot = await getDocs(q);
+                const productosFirebase = [];
+                querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+                    productosFirebase.push({...doc.data(), id: doc.id})
+                });
+                setProducts(productosFirebase);
             } catch (error) {
                 console.log(error);
             }
