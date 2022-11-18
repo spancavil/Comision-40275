@@ -1,0 +1,17 @@
+@import './styles/colors.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container-dark{
+  background-color: $dark-gray;
+  width: 100%;
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

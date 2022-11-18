@@ -1,0 +1,35 @@
+@import '../../styles/colors.scss';
+
+.item-count-container-dark{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+    align-items: center;
+
+    button {
+        border: none;
+        padding: 10px;
+        border-radius: 3px;
+        background-color: $light-gray;
+        color: white;
+    }
+}
+
+.item-count-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    color: black;
+    align-items: center;
+
+    button {
+        border: none;
+        padding: 10px;
+        border-radius: 3px;
+        color: black;
+        background-color: salmon;
+    }
+}
