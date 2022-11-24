@@ -15,7 +15,6 @@ const ItemDetail = ({ character }) => {
     const navigate = useNavigate();
 
     const confirmPurchase = (quantity) => {
-        console.log(quantity);
         addProduct({...character, quantity})
         setQuantityItemDetail(quantity);
     };
@@ -24,7 +23,6 @@ const ItemDetail = ({ character }) => {
       navigate('/cart')
     }
 
-    console.log(character);
     return (
         <div className={ themeColor === "dark" ? "item-detail-dark" : "item-detail"} >
             <img src={character.image} width={500} alt="detail" />

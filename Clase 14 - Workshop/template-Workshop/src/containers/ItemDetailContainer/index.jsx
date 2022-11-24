@@ -14,13 +14,6 @@ const ItemDetailContainer = () => {
     useEffect(() => {
 
         const getCharacterDetail = async () => {
-            
-            /* const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
-            const character = await response.json();
-            setCharacter(character) */
-
-            //Viene de la docu de firebase
-            //1ero generamos la referencia al documento. Tercer parámetro: es el ID del documento a consultar
             const docRef = doc(db, "products", id);
 
             //2do generar la petición
@@ -36,7 +29,6 @@ const ItemDetailContainer = () => {
         }
 
         getCharacterDetail()
-        //hacer el fetch del detalle del producto
     }, [id])
 
     return (character ? <ItemDetail character={character}/> : <Loader/> )

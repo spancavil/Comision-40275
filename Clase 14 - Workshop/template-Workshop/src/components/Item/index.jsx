@@ -3,7 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Theme } from '../../contexts/Theme';
 import './styles.scss'
 
-//Card
+/**
+ * Card que muestra el producto o personaje
+ * @property {Object} product Recibe el product en formato de objeto para renderizarlo
+ * @returns JSX con el renderizado del producto
+ */
+
 const Item = ({product}) => {
 
   const navigate = useNavigate()
